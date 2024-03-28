@@ -1,0 +1,50 @@
+<div class="card">
+
+    <h3 class="card-header">Vaccination</h3>
+    <div class="card-body">
+        <table class="w3-table w3-bordered">
+            <tr>
+                <th>Date</th>
+                <th>Name Company</th>
+                <th>
+                    <a *ngIf="countVaccin!=4" (click)="OpenVaccinForm()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                        </svg>
+                    </a>
+                </th>
+            </tr>
+            <tr *ngFor="let i of listVaccines">
+                <td>{{i.dateVaccin | date:"dd/MM/yyyy"}}</td>
+                <td>{{i.nameCompany}}</td>
+            </tr>
+        </table>
+
+        <br>
+        <form *ngIf="vaccinForm" (ngSubmit)="onSubmit()">
+
+            <div class="row mb-3 bb">
+                <label class="col-sm-2 col-form-label">Date Vaccin: </label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" style="width:50% ;" name="date"
+                        [(ngModel)]="newVaccin.dateVaccin" />
+                </div>
+            </div>
+
+            <div class="row mb-3 bb">
+                <label class="col-sm-2 col-form-label">Company: </label>
+                <div class="col-sm-10">
+                <select class="form-select form-select-sm" style="width:50% ;" name="nameCompany" [(ngModel)]="newVaccin.nameCompany"
+                    aria-label=".form-select-sm example">
+                    <option *ngFor="let i of companies" value="Choose Company" [value]="i" >{{i}}</option>
+                </select>
+            </div>
+            </div>
+            <div class="row mb-3">
+            <button class="w3-button w3-black w3-round" style="width:50%; margin-left: 20%;" type="submit">Add</button>
+        </div>
+        </form>
+    </div>
+</div>

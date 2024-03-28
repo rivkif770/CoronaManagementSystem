@@ -1,0 +1,53 @@
+
+<a routerLink="/" routerLinkActive="active" class="nav-link" href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+      </svg>
+</a>
+<div class="card" style="width: 70%; margin: auto; margin-bottom: 10%;">
+    <div class="card-header card text-center">
+        <h2> Client Data</h2>
+    </div>
+    <div class="card-body">
+        <div>
+            <label>Identity: </label>
+            <span>{{currentClient.identityClient}}</span>
+        </div>
+        <div>
+            <label>First Name: </label>
+            <span>{{currentClient.firstName}}</span>
+        </div>
+        <div>
+            <label>Last Name: </label>
+            <span>{{currentClient.lastName}}</span>
+        </div>
+
+        <div>
+            <label>Address: </label>
+            <span>{{currentClient.address}}</span>
+        </div>
+        <div>
+            <label>Birth Date: </label>
+            <span>{{currentClient.birthDate | date:"dd/MM/yyyy"}}</span>
+        </div>
+        <div>
+            <label>Phone Number: </label>
+            <span>{{currentClient.phone}}</span>
+        </div>
+        <div>
+            <label>Mobile Phone: </label>
+            <span>{{currentClient.mobilePhone}}</span>
+        </div>
+
+    </div>
+    <div class="card-header card text-center">
+        <h2>Corona Data</h2>
+    </div>
+    <div class="row">
+        <app-vaccin class="col-sm-6" [IdentityClient]="currentClient.identityClient"></app-vaccin>
+        <app-sick class="col-sm-6" [IdentityClient]="currentClient.identityClient"></app-sick>
+    </div>
+
+
+</div>
+

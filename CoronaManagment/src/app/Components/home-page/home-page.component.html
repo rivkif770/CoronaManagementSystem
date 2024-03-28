@@ -1,0 +1,72 @@
+<h1 class="text-center">Corona Managment System</h1>
+<div class="w3-container" style="margin-top:2% ;">
+  <table class="w3-table-all w3-hoverable" style="width:100%;">
+    <thead>
+      <tr class="w3-light-grey">
+        <th>Identity</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>
+          <a routerLink="/Add-Client" routerLinkActive="active" class="nav-link" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+              class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              <path fill-rule="evenodd"
+                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </a>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let l of listClients" class="w3-light-grey">
+      <td (click)="Details(l.id)">{{l.identityClient}}</td>
+      <td (click)="Details(l.id)">{{l.firstName}}</td>
+      <td (click)="Details(l.id)">{{l.lastName}}</td>
+      <td><svg (click)="DeleteClient(l.identityClient)" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+          <path
+            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+        </svg>
+      </td>
+      <td>
+        <svg (click)="UpdateClient(l)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-pen-fill" viewBox="0 0 16 16">
+          <path
+            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+        </svg>
+      </td>
+    </tr>
+
+  </table>
+  <br><br>
+  <h1 class="text-center">Summary of corona data</h1>
+  <div class="aa">
+    <div>
+      <h2>Number of patients per day per {{month}}:</h2>
+    </div>
+
+    <div>
+      <h2> Number of unvaccinated: {{countUnvaccinated}} </h2>
+    </div>
+  </div>
+
+
+  <table class="table table-bordered" style="width:20% ;margin-left: 6%;">
+    <tr class="text-center">
+      <th>Day</th>
+      <th>Count</th>
+    </tr>
+    <tr *ngFor="let i of listCountSick; let indexOfelement=index" class="text-center">
+      <td>{{indexOfelement+1}}/{{month}}</td>
+      <td>{{i}}</td>
+    </tr>
+
+
+  </table>
+
+
+</div>
+
+
+<router-outlet></router-outlet>

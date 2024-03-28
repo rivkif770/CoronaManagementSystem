@@ -1,0 +1,103 @@
+<a routerLink="/" routerLinkActive="active" class="nav-link" href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-90deg-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z" />
+    </svg>
+</a>
+
+<div class="card">
+    <div class="w3-container" style="margin:auto;">
+        <h2>Add Client</h2>
+    </div>
+    <form [formGroup]="form" class="w3-container" (ngSubmit)="onSubmit()">
+
+        <div class="d-flex justify-content-evenly">
+            <div class="mb-3">
+                <label class="form-label">Identity</label>
+                <mat-error
+                    *ngIf="form.get('identity')?.invalid && (form.get('identity')?.dirty || form.get('identity')?.touched)">
+                    *
+                </mat-error>
+                <input type="text" name="identityClient" class="w3-input" formControlName="identity" required
+                    [(ngModel)]="newClient.identityClient" />
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <mat-error
+                    *ngIf="form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)">
+                    *
+                </mat-error>
+                <input type="text" class="w3-input" name="firstName" formControlName="firstName" required
+                    [(ngModel)]="newClient.firstName" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <mat-error
+                    *ngIf="form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)">
+                    *
+                </mat-error>
+                <input type="text" class="w3-input" name="lastName" formControlName="lastName"
+                    [(ngModel)]="newClient.lastName" />
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-evenly">
+            <label class="form-label">Address</label>
+            <div class="mb-3">
+                <label class="form-label">City</label>
+                <mat-error *ngIf="form.get('city')?.invalid && (form.get('city')?.dirty || form.get('city')?.touched)">*
+                </mat-error>
+                <input type="text" class="w3-input" name="city" formControlName="city" [(ngModel)]="city" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Street</label>
+                <mat-error
+                    *ngIf="form.get('street')?.invalid && (form.get('street')?.dirty || form.get('street')?.touched)">*
+                </mat-error>
+                <input type="text" class="w3-input" name="street" formControlName="street" [(ngModel)]="street" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Number</label>
+                <mat-error
+                    *ngIf="form.get('number')?.invalid && (form.get('number')?.dirty || form.get('number')?.touched)">*
+                </mat-error>
+                <input type="number" class="w3-input" name="number" formControlName="number" [(ngModel)]="number" />
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-around">
+            <div class="mb-3">
+                <label class="form-label">Birth Date</label>
+                <mat-error
+                    *ngIf="form.get('birthDate')?.invalid && (form.get('birthDate')?.dirty || form.get('birthDate')?.touched)">
+                    *
+                </mat-error>
+                <input type="date" class="w3-input" name="birthDate" formControlName="birthDate"
+                    [(ngModel)]="newClient.birthDate" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <mat-error
+                    *ngIf="form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)">*
+                </mat-error>
+                <input type="text" class="w3-input" name="phone" formControlName="phone"
+                    [(ngModel)]="newClient.phone" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mobile Phone</label>
+                <input type="text" class="w3-input" name="mobilePhone" [(ngModel)]="newClient.mobilePhone" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-secondary" [disabled]="form.invalid" style="width:20% ;" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

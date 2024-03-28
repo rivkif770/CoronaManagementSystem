@@ -1,0 +1,40 @@
+<div class="card">
+    <h3 class="card-header">Sick</h3>
+    <div *ngIf="Currentsick!=null" style="padding:7px 30px" >
+        <label style="margin-right:30px ;">Date Positive: </label>
+        <span>{{Currentsick.datePositive | date:"dd/MM/yyyy"}}</span>
+        <br>
+        <label style="margin-right:24px ;">Date Recovery: </label>
+        <span>{{Currentsick.dateRecovery | date:"dd/MM/yyyy"}}</span>
+    </div>
+    <div>
+        <a *ngIf="Currentsick==null" (click)="OpenForm()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+            </svg>
+        </a>
+
+    </div>
+    <form *ngIf="openForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3 bb">
+            <label class="col-sm-2 col-form-label">Date Positive: </label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" style="width:50% ;" name="datePositive"
+                    [(ngModel)]="newSick.datePositive" />
+            </div>
+        </div>
+
+        <div class="row mb-3 bb">
+            <label class="col-sm-2 col-form-label" >Date Recovery: </label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" style="width:50% ;" name="dateRecovery"
+                    [(ngModel)]="newSick.dateRecovery" />
+            </div>
+        </div>
+        <div >
+            <button class="w3-button w3-black w3-round" style="width:50%; margin-left: 20%;"  type="submit">Submit</button>
+        </div>
+    </form>
+</div>
